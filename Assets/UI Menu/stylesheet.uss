@@ -1,0 +1,22 @@
+:root {
+}
+
+.label {
+    color: rgb(255, 255, 255);
+    font-size: 40px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-self: center;
+}
+
+.button {
+    font-size: 30px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: rgb(145, 139, 255);
+    min-width: 200px;
+    min-height: 30px;
+    top: 0;
+}

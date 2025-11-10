@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Menu/stylesheet.uss?fileID=7433441132597879392&amp;guid=12192bcb66eee0f498c3b9a3391c7b44&amp;type=3#stylesheet" />
+    <ui:VisualElement name="MainContainer" style="flex-grow: 1; display: flex; align-items: center; justify-content: center; align-self: center; max-width: 600px; max-height: 300px; min-width: 300px; min-height: 300px; align-content: flex-start; background-color: rgb(40, 40, 40); border-top-left-radius: 30px; border-top-right-radius: 30px; border-bottom-right-radius: 30px; border-bottom-left-radius: 30px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); flex-direction: column; flex-wrap: nowrap; translate: 0% 0%; background-position-y: center;">
+        <ui:Label text="#3d room" name="Label" class="Label label" style="text-overflow: clip;" />
+        <ui:Button text="Начать" name="ButtonStart" class="button" />
+        <ui:Button text="Выйти" name="ButtonExit" class="button" />
+    </ui:VisualElement>
+</ui:UXML>
