@@ -538,16 +538,16 @@ MonoBehaviour:
   prefabsContent: {fileID: 606428276}
   itemButtonPrefab: {fileID: 573459964901106596, guid: 8297e9d01a928d14886202d0c1d13ded, type: 3}
   spawnPoint: {fileID: 0}
-  spawnDistance: 10
+  spawnDistance: 5
   ghostMaterial: {fileID: 2100000, guid: 5328f84ab9bdeed409e138db87b1bab0, type: 2}
   blockingMask:
     serializedVersion: 2
     m_Bits: 64
   floorMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   snapToFloor: 1
-  heightOffset: 0
+  heightOffset: 0.25
   maxRaycastDistance: 50
   alignToFloorNormal: 0
 --- !u!4 &120683614
@@ -1870,7 +1870,7 @@ GameObject:
   - component: {fileID: 605169587}
   - component: {fileID: 605169586}
   - component: {fileID: 605169585}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

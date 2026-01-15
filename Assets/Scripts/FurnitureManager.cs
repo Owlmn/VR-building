@@ -30,7 +30,7 @@ public class FurnitureManager : MonoBehaviour
     [SerializeField] private Material ghostMaterial;
     [SerializeField] private LayerMask blockingMask;
     
-    [Header("Floor Snapping")]
+    [Header("Snapping")]
     [SerializeField] private LayerMask floorMask; // Слой пола
     [SerializeField] private bool snapToFloor = true;
     [SerializeField] private float heightOffset = 0f;
@@ -178,6 +178,7 @@ public class FurnitureManager : MonoBehaviour
             Destroy(ghostInstance);
 
         ghostInstance = Instantiate(selectedItem.prefab);
+        ghostInstance.layer = 0;
         ghost = ghostInstance.AddComponent<FurniturePlacementGhost>();
 
         // Настраиваем ghost
@@ -227,5 +228,21 @@ public class FurnitureManager : MonoBehaviour
 
         currentButtons.Clear();
         selectedItem = null;
+    }
+    
+    public void RotateGhostRight()
+    {
+        if (ghostInstance != null)
+        {
+            ghostInstance.transform.Rotate(0, 90f, 0);
+        }
+    }
+
+    public void RotateGhostLeft()
+    {
+        if (ghostInstance != null)
+        {
+            ghostInstance.transform.Rotate(0, -90f, 0);
+        }
     }
 }
