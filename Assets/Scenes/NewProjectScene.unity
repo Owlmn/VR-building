@@ -545,11 +545,10 @@ MonoBehaviour:
     m_Bits: 64
   floorMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 192
   snapToFloor: 1
   heightOffset: 0.25
   maxRaycastDistance: 50
-  alignToFloorNormal: 0
 --- !u!4 &120683614
 Transform:
   m_ObjectHideFlags: 0
@@ -1752,7 +1751,7 @@ GameObject:
   - component: {fileID: 564697477}
   - component: {fileID: 564697476}
   - component: {fileID: 564697475}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2240,6 +2239,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 300
       objectReference: {fileID: 0}
+    - target: {fileID: 3286617046434836003, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 21d727f020a7ac3469158ab5c99367fa, type: 3}
     - target: {fileID: 5008320432958287176, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
       propertyPath: m_Size.z
       value: 0.21
@@ -2307,6 +2310,14 @@ PrefabInstance:
     - target: {fileID: 7962413115775024191, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
       propertyPath: m_Name
       value: FurnitureBtn
+      objectReference: {fileID: 0}
+    - target: {fileID: 8908357655329194712, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8908357655329194712, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3969,6 +3980,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 300
       objectReference: {fileID: 0}
+    - target: {fileID: 3286617046434836003, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 364cff05190a4ff40800022151ec2473, type: 3}
     - target: {fileID: 5008320432958287176, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
       propertyPath: m_Size.z
       value: 0.21
@@ -4037,6 +4052,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightBtn
       objectReference: {fileID: 0}
+    - target: {fileID: 8908357655329194712, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 8908357655329194712, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 120
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4052,7 +4075,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1332929468}
   m_Layer: 0
-  m_Name: Enviroments
+  m_Name: Environments
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5186,6 +5209,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 300
       objectReference: {fileID: 0}
+    - target: {fileID: 3286617046434836003, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: c5cbd5fbb60b3f84687dd422d0ed58af, type: 3}
     - target: {fileID: 5008320432958287176, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
       propertyPath: m_Size.z
       value: 0.21
@@ -5254,6 +5281,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DecorBtn
       objectReference: {fileID: 0}
+    - target: {fileID: 8908357655329194712, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 130
+      objectReference: {fileID: 0}
+    - target: {fileID: 8908357655329194712, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 120
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5271,7 +5306,7 @@ GameObject:
   - component: {fileID: 1856017044}
   - component: {fileID: 1856017043}
   - component: {fileID: 1856017042}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5979,7 +6014,7 @@ GameObject:
   - component: {fileID: 2040517174}
   - component: {fileID: 2040517173}
   - component: {fileID: 2040517172}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6461,6 +6496,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cylinder
       objectReference: {fileID: 0}
+    - target: {fileID: 3507487558937509800, guid: 319252710749f3e498c643e4818d8d2b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8714375413961408414, guid: 319252710749f3e498c643e4818d8d2b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.71
@@ -6517,6 +6556,10 @@ PrefabInstance:
     - target: {fileID: 1591411671149700262, guid: 190fb5ec43cf7e044b836baef46f934c, type: 3}
       propertyPath: m_Name
       value: Sphere
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591411671149700262, guid: 190fb5ec43cf7e044b836baef46f934c, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9030224871310561073, guid: 190fb5ec43cf7e044b836baef46f934c, type: 3}
       propertyPath: m_LocalPosition.x

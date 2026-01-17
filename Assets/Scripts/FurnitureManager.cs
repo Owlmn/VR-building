@@ -5,21 +5,21 @@ using System.Collections.Generic;
 public class FurnitureManager : MonoBehaviour
 {
     [Header("Top Category Buttons")]
-    [SerializeField] private Button furnitureButton;
-    [SerializeField] private Button decorButton;
+    [SerializeField] private Button furnitureButton; // кнопка мебели
+    [SerializeField] private Button decorButton; // кнопка декора
     [SerializeField] private Button lightingButton;
 
     [Header("Scroll View")]
-    [SerializeField] private GameObject scrollView;
+    [SerializeField] private GameObject scrollView; // панель скролла (для сокрытия/показа)
 
     [Header("Type Panels (manual buttons)")]
-    [SerializeField] private GameObject typeContent;
-    [SerializeField] private GameObject furnitureCategory;
+    [SerializeField] private GameObject typeContent; // панель куда добавляются превью
+    [SerializeField] private GameObject furnitureCategory; // панель с категориями мебели (заранее готовые)
     [SerializeField] private GameObject decorCategory;
     [SerializeField] private GameObject lightingCategory;
 
     [Header("Prefabs Content (dynamic)")]
-    [SerializeField] private Transform prefabsContent;
+    [SerializeField] private Transform prefabsContent; 
     [SerializeField] private GameObject itemButtonPrefab;
 
     [Header("Spawn Settings")]
@@ -35,7 +35,6 @@ public class FurnitureManager : MonoBehaviour
     [SerializeField] private bool snapToFloor = true;
     [SerializeField] private float heightOffset = 0f;
     [SerializeField] private float maxRaycastDistance = 50f;
-    [SerializeField] private bool alignToFloorNormal = false;
 
     private GameObject currentCategoryPanel;
     private List<GameObject> currentButtons = new();
@@ -67,7 +66,7 @@ public class FurnitureManager : MonoBehaviour
         lightingButton.onClick.AddListener(() => ShowCategory(lightingCategory));
     }
 
-    // ===== TOP CATEGORY =====
+    // Логика выбора категории (мебель, декор, освещение)
     private void ShowCategory(GameObject categoryPanel)
     {
         scrollView.SetActive(true);
@@ -89,7 +88,7 @@ public class FurnitureManager : MonoBehaviour
         categoryPanel.SetActive(true);
     }
 
-    // ===== TYPE BUTTON (Chair / Table / etc) =====
+    // Загрузка кнопок из preview
     public void LoadType(string resourcesPath)
     {
         Debug.Log("=== LoadType CALLED ===");
@@ -186,7 +185,7 @@ public class FurnitureManager : MonoBehaviour
         ghost.distance = spawnDistance;
         ghost.blockingMask = blockingMask;
         
-        // ===== НАСТРОЙКИ ПРИВЯЗКИ К ПОЛУ =====
+        // Привязка к полу/мебели
         ghost.floorMask = floorMask;
         ghost.snapToFloor = snapToFloor;
         ghost.heightOffset = heightOffset;
@@ -203,6 +202,30 @@ public class FurnitureManager : MonoBehaviour
         }
     }
 
+    private Transform GetOrCreateFurnitureParent()
+    {
+        // Найти или создать Environments
+        GameObject env = GameObject.Find("Environments");
+        if (env == null)
+        {
+            env = new GameObject("Environments");
+            Debug.Log("Created Environments root");
+        }
+
+        // Найти или создать Furniture как ребёнка Environments
+        Transform furniture = env.transform.Find("Furniture");
+        if (furniture == null)
+        {
+            GameObject f = new GameObject("Furniture");
+            f.transform.SetParent(env.transform);
+            furniture = f.transform;
+            Debug.Log("Created Furniture container under Environments");
+        }
+
+        return furniture;
+    }
+
+
     public void AddSelectedObject()
     {
         if (selectedItem == null || ghost == null)
@@ -211,15 +234,19 @@ public class FurnitureManager : MonoBehaviour
         if (!ghost.CanPlace)
             return;
 
-        Instantiate(
+        Transform parent = GetOrCreateFurnitureParent();
+
+        GameObject obj = Instantiate(
             selectedItem.prefab,
             ghost.transform.position,
-            ghost.transform.rotation
+            ghost.transform.rotation,
+            parent
         );
 
         Destroy(ghostInstance);
         ghost = null;
     }
+
 
     private void ClearPrefabs()
     {
