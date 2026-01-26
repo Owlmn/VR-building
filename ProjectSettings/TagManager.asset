@@ -12,8 +12,8 @@ TagManager:
   - VR_UI
   - Water
   - UI
-  - 
-  - 
+  - Furniture
+  - Floor
   - 
   - 
   - 
@@ -39,6 +39,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: UI
+    uniqueID: 2981867247
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
