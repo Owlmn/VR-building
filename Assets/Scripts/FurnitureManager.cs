@@ -52,6 +52,65 @@ public class FurnitureManager : MonoBehaviour
         public string path;
     }
 
+    // Добавьте этот метод в FurnitureManager
+    void DebugResourcePaths()
+    {
+        Debug.Log("=== ДИАГНОСТИКА ПУТЕЙ РЕСУРСОВ ===");
+        
+        // 1. Проверим, какие пути используются
+        string[] testPaths = new string[]
+        {
+            "Furniture/Prefabs/Sofas",
+            "Furniture/Previews/Sofas",
+            "Furniture/Previews/Sofas/sofa_modern",
+            "Furniture/Previews/Sofas/sofa_modern.png"
+        };
+        
+        foreach (string path in testPaths)
+        {
+            // Проверяем загрузку префабов
+            GameObject[] prefabs = Resources.LoadAll<GameObject>(path);
+            Debug.Log($"Path '{path}' -> Префабов: {prefabs.Length}");
+            
+            // Проверяем загрузку спрайтов
+            Sprite sprite = Resources.Load<Sprite>(path);
+            Debug.Log($"Path '{path}' -> Спрайт: {(sprite != null ? "НАЙДЕН" : "НЕ НАЙДЕН")}");
+        }
+        
+        // 2. Проверим содержимое папки превью
+        #if UNITY_EDITOR
+        string previewsRoot = Application.dataPath + "/Resources/Furniture/Previews/";
+        
+        if (System.IO.Directory.Exists(previewsRoot))
+        {
+            Debug.Log("=== СОДЕРЖИМОЕ ПАПКИ PREVIEWS ===");
+            
+            // Рекурсивно обходим все папки
+            string[] allFiles = System.IO.Directory.GetFiles(previewsRoot, "*.*", System.IO.SearchOption.AllDirectories);
+            
+            foreach (string file in allFiles)
+            {
+                // Пропускаем мета-файлы
+                if (file.EndsWith(".meta")) continue;
+                
+                string relativePath = file.Replace(Application.dataPath + "/Resources/", "").Replace("\\", "/");
+                string fileName = System.IO.Path.GetFileNameWithoutExtension(file);
+                
+                Debug.Log($"Файл: {relativePath} (имя: {fileName})");
+                
+                // Пробуем загрузить как спрайт
+                Sprite test = Resources.Load<Sprite>(relativePath.Replace(".png", ""));
+                Debug.Log($"  Загрузка: {(test != null ? "✅ УСПЕХ" : "❌ ОШИБКА")}");
+            }
+        }
+        else
+        {
+            Debug.LogError($"Папка не существует: {previewsRoot}");
+        }
+        #endif
+    }
+
+
     private void Start()
     {
         scrollView.SetActive(false);
@@ -64,6 +123,7 @@ public class FurnitureManager : MonoBehaviour
         furnitureButton.onClick.AddListener(() => ShowCategory(furnitureCategory));
         decorButton.onClick.AddListener(() => ShowCategory(decorCategory));
         lightingButton.onClick.AddListener(() => ShowCategory(lightingCategory));
+        Invoke(nameof(DebugResourcePaths), 1f); // Ждем секунду
     }
 
     // Логика выбора категории (мебель, декор, освещение)
@@ -109,7 +169,7 @@ public class FurnitureManager : MonoBehaviour
         Debug.Log("=== LoadItemsFromResources ===");
         Debug.Log($"Loading prefabs from: Resources/{path}/Prefabs");
 
-        GameObject[] prefabs = Resources.LoadAll<GameObject>($"{path}/Prefabs");
+        GameObject[] prefabs = Resources.LoadAll<GameObject>($"{path}");
         Debug.Log($"Prefabs found: {prefabs.Length}");
 
         if (prefabs.Length == 0)
@@ -121,7 +181,7 @@ public class FurnitureManager : MonoBehaviour
         {
             Debug.Log($"Prefab found: {prefab.name}");
 
-            string previewPath = $"{path}/Previews/{prefab.name}";
+            string previewPath = $"{path.Replace("Prefabs", "Previews")}/{prefab.name}";
             Debug.Log($"Trying to load preview at: Resources/{previewPath}");
 
             Sprite preview = Resources.Load<Sprite>(previewPath);
@@ -202,7 +262,7 @@ public class FurnitureManager : MonoBehaviour
         }
     }
 
-    private Transform GetOrCreateFurnitureParent()
+    public Transform GetOrCreateFurnitureParent()
     {
         // Найти или создать Environments
         GameObject env = GameObject.Find("Environments");
