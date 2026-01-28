@@ -1,0 +1,77 @@
+{
+    "version": 1,
+    "name": "XR Controls",
+    "maps": [
+        {
+            "name": "GamePlay",
+            "id": "bfc7a08c-e80e-41de-814f-dadf85217203",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "db0effc9-17ae-4eee-8ea6-5ab9d993d0d4",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Place",
+                    "type": "Button",
+                    "id": "bbfcceaa-1e5f-4ea8-af39-59613e68f98c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "6058c285-ebea-4f02-8b8a-5f1c621c0258",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6d911930-dac7-4962-8205-f7de170be433",
+                    "path": "<XRController>{LeftHand}/{TriggerButton}",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Place",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6b111d6e-198e-4b0f-9e08-27587199fda4",
+                    "path": "<XRController>{RightHand}/{TriggerButton}",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Place",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1a06c323-9a57-4a1f-abca-83e2a4deaed3",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Place",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

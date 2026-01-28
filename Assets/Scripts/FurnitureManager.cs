@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 
 public class FurnitureManager : MonoBehaviour
 {
@@ -35,6 +36,10 @@ public class FurnitureManager : MonoBehaviour
     [SerializeField] private bool snapToFloor = true;
     [SerializeField] private float heightOffset = 0f;
     [SerializeField] private float maxRaycastDistance = 50f;
+
+    [Header("XR Input")]
+    [SerializeField] private InputActionProperty placeAction;
+
 
     private GameObject currentCategoryPanel;
     private List<GameObject> currentButtons = new();
@@ -316,7 +321,34 @@ public class FurnitureManager : MonoBehaviour
         currentButtons.Clear();
         selectedItem = null;
     }
-    
+
+    private void OnEnable()
+    {
+        placeAction.action.performed += OnPlacePerformed;
+        placeAction.action.Enable();
+    }
+
+    private void OnDisable()
+    {
+        placeAction.action.performed -= OnPlacePerformed;
+        placeAction.action.Disable();
+    }
+    private bool placePressed;
+    private void OnPlacePerformed(InputAction.CallbackContext ctx)
+    {
+        if (placePressed) return;
+        placePressed = true;
+
+        AddSelectedObject();
+    }
+
+    private void Update()
+    {
+        if (placePressed && placeAction.action.ReadValue<float>() < 0.1f)
+            placePressed = false;
+    }
+
+
     public void RotateGhostRight()
     {
         if (ghostInstance != null)

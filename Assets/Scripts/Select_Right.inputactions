@@ -1,0 +1,46 @@
+{
+    "version": 1,
+    "name": "Select_Right",
+    "maps": [
+        {
+            "name": "Select_Right",
+            "id": "bfc7a08c-e80e-41de-814f-dadf85217203",
+            "actions": [
+                {
+                    "name": "Pres",
+                    "type": "Button",
+                    "id": "bbfcceaa-1e5f-4ea8-af39-59613e68f98c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "6d911930-dac7-4962-8205-f7de170be433",
+                    "path": "<XRController>{RightHand}/{TriggerButton}",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pres",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1a06c323-9a57-4a1f-abca-83e2a4deaed3",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pres",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
