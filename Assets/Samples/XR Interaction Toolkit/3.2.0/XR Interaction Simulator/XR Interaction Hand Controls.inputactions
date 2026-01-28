@@ -1,5 +1,4 @@
 {
-    "version": 1,
     "name": "XR Interaction Hand Controls",
     "maps": [
         {
@@ -10,7 +9,7 @@
                     "name": "Poke",
                     "type": "Button",
                     "id": "40eda730-1343-4304-a541-d7c035370ce5",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
