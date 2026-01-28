@@ -52,156 +52,93 @@ public class FurnitureManager : MonoBehaviour
         public string path;
     }
 
-    // Добавьте этот метод в FurnitureManager
-    void DebugResourcePaths()
-    {
-        Debug.Log("=== ДИАГНОСТИКА ПУТЕЙ РЕСУРСОВ ===");
-        
-        // 1. Проверим, какие пути используются
-        string[] testPaths = new string[]
-        {
-            "Furniture/Prefabs/Sofas",
-            "Furniture/Previews/Sofas",
-            "Furniture/Previews/Sofas/sofa_modern",
-            "Furniture/Previews/Sofas/sofa_modern.png"
-        };
-        
-        foreach (string path in testPaths)
-        {
-            // Проверяем загрузку префабов
-            GameObject[] prefabs = Resources.LoadAll<GameObject>(path);
-            Debug.Log($"Path '{path}' -> Префабов: {prefabs.Length}");
-            
-            // Проверяем загрузку спрайтов
-            Sprite sprite = Resources.Load<Sprite>(path);
-            Debug.Log($"Path '{path}' -> Спрайт: {(sprite != null ? "НАЙДЕН" : "НЕ НАЙДЕН")}");
-        }
-        
-        // 2. Проверим содержимое папки превью
-        #if UNITY_EDITOR
-        string previewsRoot = Application.dataPath + "/Resources/Furniture/Previews/";
-        
-        if (System.IO.Directory.Exists(previewsRoot))
-        {
-            Debug.Log("=== СОДЕРЖИМОЕ ПАПКИ PREVIEWS ===");
-            
-            // Рекурсивно обходим все папки
-            string[] allFiles = System.IO.Directory.GetFiles(previewsRoot, "*.*", System.IO.SearchOption.AllDirectories);
-            
-            foreach (string file in allFiles)
-            {
-                // Пропускаем мета-файлы
-                if (file.EndsWith(".meta")) continue;
-                
-                string relativePath = file.Replace(Application.dataPath + "/Resources/", "").Replace("\\", "/");
-                string fileName = System.IO.Path.GetFileNameWithoutExtension(file);
-                
-                Debug.Log($"Файл: {relativePath} (имя: {fileName})");
-                
-                // Пробуем загрузить как спрайт
-                Sprite test = Resources.Load<Sprite>(relativePath.Replace(".png", ""));
-                Debug.Log($"  Загрузка: {(test != null ? "✅ УСПЕХ" : "❌ ОШИБКА")}");
-            }
-        }
-        else
-        {
-            Debug.LogError($"Папка не существует: {previewsRoot}");
-        }
-        #endif
-    }
-
-
     private void Start()
     {
         scrollView.SetActive(false);
         typeContent.SetActive(false);
 
-        furnitureCategory.SetActive(false);
-        decorCategory.SetActive(false);
-        lightingCategory.SetActive(false);
+        HideAllCategories();
 
         furnitureButton.onClick.AddListener(() => ShowCategory(furnitureCategory));
         decorButton.onClick.AddListener(() => ShowCategory(decorCategory));
         lightingButton.onClick.AddListener(() => ShowCategory(lightingCategory));
-        Invoke(nameof(DebugResourcePaths), 1f); // Ждем секунду
     }
 
-    // Логика выбора категории (мебель, декор, освещение)
-    private void ShowCategory(GameObject categoryPanel)
+    private void HideAllCategories()
     {
+        furnitureCategory.SetActive(false);
+        decorCategory.SetActive(false);
+        lightingCategory.SetActive(false);
+    }
+
+    private void ShowCategory(GameObject categoryPanel)
+    {   // Прячем категорию, если это повторное нажатие
+        if (currentCategoryPanel == categoryPanel)
+        {
+            scrollView.SetActive(false);
+            HideAllCategories();
+            currentCategoryPanel = null;
+            return;
+        }
+
+        // Иначе очищаем весь scrollview и показываем нужную панель
         scrollView.SetActive(true);
         typeContent.SetActive(false);
         ClearPrefabs();
 
-        furnitureCategory.SetActive(false);
-        decorCategory.SetActive(false);
-        lightingCategory.SetActive(false);
-
-        if (currentCategoryPanel == categoryPanel)
-        {
-            scrollView.SetActive(false);
-            currentCategoryPanel = null;
-            return;
-        }
+        HideAllCategories();
 
         currentCategoryPanel = categoryPanel;
         categoryPanel.SetActive(true);
     }
 
-    // Загрузка кнопок из preview
+    // Вызывается кнопками в categories панелях. Скрывает текущую панель и вызвает LoadItemsResources для динамической загрузки кнопок
     public void LoadType(string resourcesPath)
     {
-        Debug.Log("=== LoadType CALLED ===");
-        
         if (currentCategoryPanel != null)
-        {
             currentCategoryPanel.SetActive(false);
-            Debug.Log($"Hiding category panel: {currentCategoryPanel.name}");
-        }
 
         typeContent.SetActive(true);
         ClearPrefabs();
         LoadItemsFromResources(resourcesPath);
     }
 
+    // Получает путь к папке, в которой находятся префабы и превью для выбранного типа объектов.
     private void LoadItemsFromResources(string path)
     {
-        Debug.Log("=== LoadItemsFromResources ===");
-        Debug.Log($"Loading prefabs from: Resources/{path}/Prefabs");
-
-        GameObject[] prefabs = Resources.LoadAll<GameObject>($"{path}");
-        Debug.Log($"Prefabs found: {prefabs.Length}");
+        // Получаем все префабы из папки
+        GameObject[] prefabs = Resources.LoadAll<GameObject>(path);
 
         if (prefabs.Length == 0)
         {
-            Debug.LogWarning($"NO PREFABS FOUND at Resources/{path}/Prefabs");
+            Debug.LogWarning($"NO PREFABS FOUND at Resources/{path}");
+            return;
         }
-
-        foreach (GameObject prefab in prefabs)
+        
+        // Ищем превью для префабов
+        foreach (var prefab in prefabs)
         {
-            Debug.Log($"Prefab found: {prefab.name}");
-
+            // Они лежат по тому же пути только в папке Previews
             string previewPath = $"{path.Replace("Prefabs", "Previews")}/{prefab.name}";
-            Debug.Log($"Trying to load preview at: Resources/{previewPath}");
-
             Sprite preview = Resources.Load<Sprite>(previewPath);
 
             if (preview == null)
             {
-                Debug.LogWarning($"❌ Preview NOT found for {prefab.name}");
+                Debug.LogWarning($"Preview NOT found for {prefab.name}");
                 continue;
             }
 
-            Debug.Log($"✅ Preview loaded for {prefab.name}");
             CreateItemButton(prefab, preview, path);
         }
     }
 
     private void CreateItemButton(GameObject prefab, Sprite preview, string path)
     {
+        // Внутрь prefabsContent добавляем заранее подготовленную кнопку itemButtonPrefab
         GameObject btnObj = Instantiate(itemButtonPrefab, prefabsContent);
         btnObj.SetActive(true);
 
+        // Корректируем itemButtonPrefab в соответствии с preview и именем префаба
         btnObj.transform.Find("Icon").GetComponent<Image>().sprite = preview;
         btnObj.transform.Find("Name").GetComponent<Text>().text = prefab.name;
 
@@ -219,6 +156,7 @@ public class FurnitureManager : MonoBehaviour
         currentButtons.Add(btnObj);
     }
 
+    // Выбираем кнопку, подсвечиваем ее.
     private void SelectItem(FurnitureItem item, GameObject btn)
     {
         selectedItem = item;
@@ -231,13 +169,16 @@ public class FurnitureManager : MonoBehaviour
         CreateGhost();
     }
 
+    // Создание объекта ghost - предпоказа объекта.
     private void CreateGhost()
     {
+        // Удаляем объект ghost, если он уже существует
         if (ghostInstance)
             Destroy(ghostInstance);
 
         ghostInstance = Instantiate(selectedItem.prefab);
         ghostInstance.layer = 0;
+        // Добавляем в объект скрипт с логикой постановки
         ghost = ghostInstance.AddComponent<FurniturePlacementGhost>();
 
         // Настраиваем ghost
@@ -262,6 +203,49 @@ public class FurnitureManager : MonoBehaviour
         }
     }
 
+    private void ConfigureGhost(FurniturePlacementGhost g)
+    {
+        g.head = Camera.main.transform;
+        g.distance = spawnDistance;
+        g.blockingMask = blockingMask;
+        g.floorMask = floorMask;
+        g.snapToFloor = snapToFloor;
+        g.heightOffset = heightOffset;
+        g.maxRaycastDistance = maxRaycastDistance;
+    }
+
+    private void ApplyGhostMaterial(GameObject obj)
+    {
+        foreach (var r in obj.GetComponentsInChildren<Renderer>())
+        {
+            Material[] mats = new Material[r.materials.Length];
+            for (int i = 0; i < mats.Length; i++)
+                mats[i] = new Material(ghostMaterial);
+
+            r.materials = mats;
+        }
+    }
+
+    // Привязан к кнопке "Добавить"
+    public void AddSelectedObject()
+    {
+        if (selectedItem == null || ghost == null || !ghost.CanPlace)
+            return;
+
+        Transform parent = GetOrCreateFurnitureParent();
+
+        Instantiate(
+            selectedItem.prefab,
+            ghost.transform.position,
+            ghost.transform.rotation,
+            parent
+        );
+
+        Destroy(ghostInstance);
+        ghost = null;
+    }
+
+    // Ложим объет в environments
     public Transform GetOrCreateFurnitureParent()
     {
         // Найти или создать Environments
@@ -285,29 +269,7 @@ public class FurnitureManager : MonoBehaviour
         return furniture;
     }
 
-
-    public void AddSelectedObject()
-    {
-        if (selectedItem == null || ghost == null)
-            return;
-
-        if (!ghost.CanPlace)
-            return;
-
-        Transform parent = GetOrCreateFurnitureParent();
-
-        GameObject obj = Instantiate(
-            selectedItem.prefab,
-            ghost.transform.position,
-            ghost.transform.rotation,
-            parent
-        );
-
-        Destroy(ghostInstance);
-        ghost = null;
-    }
-
-
+    
     private void ClearPrefabs()
     {
         foreach (Transform t in prefabsContent)
@@ -316,20 +278,7 @@ public class FurnitureManager : MonoBehaviour
         currentButtons.Clear();
         selectedItem = null;
     }
-    
-    public void RotateGhostRight()
-    {
-        if (ghostInstance != null)
-        {
-            ghostInstance.transform.Rotate(0, 90f, 0);
-        }
-    }
-
-    public void RotateGhostLeft()
-    {
-        if (ghostInstance != null)
-        {
-            ghostInstance.transform.Rotate(0, -90f, 0);
-        }
-    }
 }
+
+
+
