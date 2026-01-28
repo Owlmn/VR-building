@@ -308,7 +308,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1531984822148425578, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1531984822148425578, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
       propertyPath: m_AnchorMin.x
@@ -316,7 +316,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1531984822148425578, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1531984822148425578, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
       propertyPath: m_SizeDelta.x
@@ -356,11 +356,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1531984822148425578, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 1531984822148425578, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -55
       objectReference: {fileID: 0}
     - target: {fileID: 1531984822148425578, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -546,12 +546,12 @@ MonoBehaviour:
   ghostMaterial: {fileID: 2100000, guid: 5328f84ab9bdeed409e138db87b1bab0, type: 2}
   blockingMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 65
   floorMask:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 193
   snapToFloor: 1
-  heightOffset: 0.25
+  heightOffset: 0.1
   maxRaycastDistance: 50
 --- !u!4 &120683614
 Transform:
@@ -713,7 +713,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1531984822148425578, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1531984822148425578, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
       propertyPath: m_AnchorMin.x
@@ -721,7 +721,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1531984822148425578, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1531984822148425578, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
       propertyPath: m_SizeDelta.x
@@ -761,11 +761,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1531984822148425578, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 322
       objectReference: {fileID: 0}
     - target: {fileID: 1531984822148425578, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -55
       objectReference: {fileID: 0}
     - target: {fileID: 1531984822148425578, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1515,6 +1515,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1332929468}
     m_Modifications:
+    - target: {fileID: -7303801649009901081, guid: 39a170bb51f8ac6408a0fa79c6ad119a, type: 3}
+      propertyPath: m_InteractionLayers.m_Bits
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3132763440715753453, guid: 39a170bb51f8ac6408a0fa79c6ad119a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.1616111
@@ -1558,6 +1562,10 @@ PrefabInstance:
     - target: {fileID: 5263596815541115048, guid: 39a170bb51f8ac6408a0fa79c6ad119a, type: 3}
       propertyPath: m_Name
       value: Wooden Chair
+      objectReference: {fileID: 0}
+    - target: {fileID: 5263596815541115048, guid: 39a170bb51f8ac6408a0fa79c6ad119a, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1636,10 +1644,10 @@ RectTransform:
   - {fileID: 589917312}
   m_Father: {fileID: 1724528063}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 402, y: 110}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 61, y: -55}
+  m_SizeDelta: {x: 523, y: 110}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &539042795
 MonoBehaviour:
@@ -1662,7 +1670,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 539042793}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
   m_Name: 
@@ -2130,10 +2138,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1724528063}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 110}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 20, y: -55}
+  m_SizeDelta: {x: 40, y: 110}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &606428277
 MonoBehaviour:
@@ -2142,7 +2150,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 606428275}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
   m_Name: 
@@ -2610,9 +2618,9 @@ RectTransform:
   - {fileID: 2012272678}
   m_Father: {fileID: 1724528063}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 988, y: -55}
   m_SizeDelta: {x: 402, y: 110}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &756889156
@@ -2622,7 +2630,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 756889154}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
   m_Name: 
@@ -2895,8 +2903,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1917096515}
   m_HandleRect: {fileID: 1917096514}
   m_Direction: 0
-  m_Value: 0.00000003552686
-  m_Size: 0.39034772
+  m_Value: -0.0000011355377
+  m_Size: 0.3900709
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3148,6 +3156,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Stool
       objectReference: {fileID: 0}
+    - target: {fileID: 6940367979983551646, guid: c0aa38571f5ae3f44861fc146ce00fdc, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3384,9 +3396,9 @@ RectTransform:
   - {fileID: 170629259}
   m_Father: {fileID: 1724528063}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 585, y: -55}
   m_SizeDelta: {x: 402, y: 110}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1069493817
@@ -3396,7 +3408,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1069493815}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
   m_Name: 
@@ -3451,7 +3463,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1531984822148425578, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1531984822148425578, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
       propertyPath: m_AnchorMin.x
@@ -3459,7 +3471,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1531984822148425578, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1531984822148425578, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
       propertyPath: m_SizeDelta.x
@@ -3499,11 +3511,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1531984822148425578, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 443
       objectReference: {fileID: 0}
     - target: {fileID: 1531984822148425578, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -55
       objectReference: {fileID: 0}
     - target: {fileID: 1531984822148425578, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3669,6 +3681,10 @@ PrefabInstance:
     - target: {fileID: 1591411671149700262, guid: 190fb5ec43cf7e044b836baef46f934c, type: 3}
       propertyPath: m_Name
       value: Sphere
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591411671149700262, guid: 190fb5ec43cf7e044b836baef46f934c, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3870716167930798975, guid: 190fb5ec43cf7e044b836baef46f934c, type: 3}
       propertyPath: m_InteractionLayers.m_Bits
@@ -4369,7 +4385,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1364929634}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 120683613}
+        m_TargetAssemblyTypeName: FurnitureManager, Assembly-CSharp
+        m_MethodName: LoadType
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Furniture/Prefabs/Shelfes
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1459821979
 GameObject:
   m_ObjectHideFlags: 0
@@ -4709,6 +4737,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cylinder
       objectReference: {fileID: 0}
+    - target: {fileID: 3507487558937509800, guid: 319252710749f3e498c643e4818d8d2b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8714375413961408414, guid: 319252710749f3e498c643e4818d8d2b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.3363698
@@ -4800,8 +4832,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.5}
-  m_SizeDelta: {x: 0, y: 110}
+  m_AnchoredPosition: {x: 0.0010070801, y: 0.5}
+  m_SizeDelta: {x: 1410, y: 110}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1724528064
 MonoBehaviour:
@@ -4820,7 +4852,7 @@ MonoBehaviour:
     m_Right: 20
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 3
+  m_ChildAlignment: 4
   m_Spacing: 1
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
@@ -4841,7 +4873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalFit: 2
+  m_HorizontalFit: 1
   m_VerticalFit: 0
 --- !u!1001 &1761718757
 PrefabInstance:
@@ -5795,7 +5827,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1531984822148425578, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1531984822148425578, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
       propertyPath: m_AnchorMin.x
@@ -5803,7 +5835,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1531984822148425578, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1531984822148425578, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
       propertyPath: m_SizeDelta.x
@@ -5843,11 +5875,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1531984822148425578, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 201
       objectReference: {fileID: 0}
     - target: {fileID: 1531984822148425578, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -55
       objectReference: {fileID: 0}
     - target: {fileID: 1531984822148425578, guid: a1bfd040355f5244d9bb8917f0386a29, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6163,7 +6195,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2042076692}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 120683613}
+        m_TargetAssemblyTypeName: FurnitureManager, Assembly-CSharp
+        m_MethodName: LoadType
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Furniture/Prefabs/Tables
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2055958806 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3507487558937509800, guid: 319252710749f3e498c643e4818d8d2b, type: 3}
@@ -6428,6 +6472,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 744400668321698579, guid: ffa76157cf6e2c04c9eea97e8cece709, type: 3}
+      propertyPath: m_InteractionLayers.m_Bits
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031985587999659788, guid: ffa76157cf6e2c04c9eea97e8cece709, type: 3}
+      propertyPath: m_PhysicsLayerMask.m_Bits
+      value: 65
+      objectReference: {fileID: 0}
     - target: {fileID: 2433081625310673821, guid: ffa76157cf6e2c04c9eea97e8cece709, type: 3}
       propertyPath: m_Name
       value: XR Origin (XR Rig)
@@ -6523,6 +6575,10 @@ PrefabInstance:
     - target: {fileID: 3896577171582303971, guid: ffa76157cf6e2c04c9eea97e8cece709, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5557862080822561636, guid: ffa76157cf6e2c04c9eea97e8cece709, type: 3}
+      propertyPath: m_InteractionLayers.m_Bits
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6948003852851706154, guid: ffa76157cf6e2c04c9eea97e8cece709, type: 3}
       propertyPath: m_Radius

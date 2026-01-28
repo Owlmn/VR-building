@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 9064581194878144523}
   - component: {fileID: 6650387491018170225}
   - component: {fileID: 1977883472432736817}
+  - component: {fileID: 3927517833918579268}
   m_Layer: 0
   m_Name: Wooden Stool
   m_TagString: Untagged
@@ -284,3 +285,18 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &3927517833918579268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6940367979983551646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29beab05c29ecd0468cf024fb5f59c26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settleVelocity: 0.05
+  settleAngularVelocity: 0.05
+  stableTime: 0.3
