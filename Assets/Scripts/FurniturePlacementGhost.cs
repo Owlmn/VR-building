@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class FurniturePlacementGhost : MonoBehaviour
 {
@@ -27,13 +28,23 @@ public class FurniturePlacementGhost : MonoBehaviour
 
     void Awake()
     {
-        renderers = GetComponentsInChildren<Renderer>();
-        colliders = GetComponentsInChildren<Collider>();
+        // Удаляем MeshCollider, чтобы избежать concave trigger
+        foreach (var mc in GetComponentsInChildren<MeshCollider>())
+            Destroy(mc);
 
-        // Ghost НЕ должен участвовать в физике
-        foreach (var c in colliders)
-            c.isTrigger = true;
+        // Добавляем BoxCollider к каждому Renderer
+        var newColliders = new List<Collider>();
+        foreach (var r in GetComponentsInChildren<Renderer>())
+        {
+            BoxCollider box = r.gameObject.AddComponent<BoxCollider>();
+            box.isTrigger = true;
+            newColliders.Add(box); // собираем только новые BoxCollider
+        }
+
+        colliders = newColliders.ToArray();
+        renderers = GetComponentsInChildren<Renderer>();
     }
+
 
     void LateUpdate()
     {
@@ -113,4 +124,5 @@ public class FurniturePlacementGhost : MonoBehaviour
                 m.color = target;
         }
     }
+
 }

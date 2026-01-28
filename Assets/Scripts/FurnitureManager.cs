@@ -177,7 +177,7 @@ public class FurnitureManager : MonoBehaviour
             Destroy(ghostInstance);
 
         ghostInstance = Instantiate(selectedItem.prefab);
-        ghostInstance.layer = 0;
+        ghostInstance.layer = 2;
         // Добавляем в объект скрипт с логикой постановки
         ghost = ghostInstance.AddComponent<FurniturePlacementGhost>();
 
@@ -234,12 +234,16 @@ public class FurnitureManager : MonoBehaviour
 
         Transform parent = GetOrCreateFurnitureParent();
 
-        Instantiate(
+        GameObject obj = Instantiate(
             selectedItem.prefab,
             ghost.transform.position,
             ghost.transform.rotation,
             parent
         );
+
+        var state = obj.GetComponent<FurniturePhysicsState>();
+        if (state != null)
+            state.SetPlacedState();
 
         Destroy(ghostInstance);
         ghost = null;

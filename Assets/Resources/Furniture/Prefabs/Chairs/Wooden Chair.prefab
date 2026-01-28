@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4750145219820065315}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: -7303801649009901081}
   - component: {fileID: 1120766717694730916}
   - component: {fileID: 4373687765948667819}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Wooden Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -2895,8 +2895,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1917096515}
   m_HandleRect: {fileID: 1917096514}
   m_Direction: 0
-  m_Value: 0.000000035526867
-  m_Size: 0.39034778
+  m_Value: 0.00000003552686
+  m_Size: 0.39034772
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3669,6 +3669,10 @@ PrefabInstance:
     - target: {fileID: 1591411671149700262, guid: 190fb5ec43cf7e044b836baef46f934c, type: 3}
       propertyPath: m_Name
       value: Sphere
+      objectReference: {fileID: 0}
+    - target: {fileID: 3870716167930798975, guid: 190fb5ec43cf7e044b836baef46f934c, type: 3}
+      propertyPath: m_InteractionLayers.m_Bits
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 9030224871310561073, guid: 190fb5ec43cf7e044b836baef46f934c, type: 3}
       propertyPath: m_LocalPosition.x
