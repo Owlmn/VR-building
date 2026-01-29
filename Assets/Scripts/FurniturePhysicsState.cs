@@ -16,6 +16,7 @@ public class FurniturePhysicsState : MonoBehaviour
     [SerializeField] float settleVelocity = 0.05f;
     [SerializeField] float settleAngularVelocity = 0.05f;
     [SerializeField] float stableTime = 0.3f;
+    
 
     float stableTimer;
 
@@ -74,8 +75,6 @@ public class FurniturePhysicsState : MonoBehaviour
     void StartSettling()
     {
         Debug.Log("START SETTLING");
-        rb.isKinematic = false;
-        rb.useGravity = true;
         rb.constraints = RigidbodyConstraints.None;
 
         isSettling = true;
@@ -88,16 +87,13 @@ public class FurniturePhysicsState : MonoBehaviour
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
 
-        rb.isKinematic = true;
-        rb.useGravity = false;
         rb.constraints = RigidbodyConstraints.FreezeAll;
     }
 
     public void SetGrabbedState()
     {
         Debug.Log("GRABBED");
-        rb.isKinematic = false;
-        rb.useGravity = false;
+
         rb.constraints = RigidbodyConstraints.None;
     }
 }

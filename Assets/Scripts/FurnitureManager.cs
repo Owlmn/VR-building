@@ -61,7 +61,7 @@ public class FurnitureManager : MonoBehaviour
 
         furnitureButton.onClick.AddListener(() => ShowCategory(furnitureCategory));
         decorButton.onClick.AddListener(() => ShowCategory(decorCategory));
-        lightingButton.onClick.AddListener(() => ShowCategory(lightingCategory));
+
     }
 
     private void HideAllCategories()
@@ -95,6 +95,7 @@ public class FurnitureManager : MonoBehaviour
     // Вызывается кнопками в categories панелях. Скрывает текущую панель и вызвает LoadItemsResources для динамической загрузки кнопок
     public void LoadType(string resourcesPath)
     {
+        scrollView.SetActive(true);
         if (currentCategoryPanel != null)
             currentCategoryPanel.SetActive(false);
 
